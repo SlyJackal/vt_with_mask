@@ -1,1 +1,1 @@
-# vt_with_mask
+# Visual testing with dynamic template based on mask of picture
