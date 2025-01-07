@@ -1,8 +1,9 @@
 import cv2
 import numpy as np
-import os  # For directory management
 
 # Global variables
+mask_path = str()
+template_path = str()
 drawing = False  # True when mouse is pressed
 erase_mode = False  # Toggle between draw and erase mode
 ix, iy = -1, -1  # Initial mouse position
@@ -26,7 +27,7 @@ def draw_or_erase(event, x, y, flags, param):
         cv2.circle(mask, (x, y), 10, 0 if erase_mode else 255, -1)
 
 # Load template
-template = cv2.imread(r'D:\Git\template.png', cv2.IMREAD_COLOR)
+template = cv2.imread(template_path, cv2.IMREAD_COLOR)
 if template is None:
     print("Error loading template.")
     exit()
@@ -58,7 +59,7 @@ while True:
             cv2.waitKey(1)  # Show for 100ms
 
             # Save the mask
-            cv2.imwrite(r'D:\Git\vt_with_mask\mask.PNG', mask)
+            cv2.imwrite(mask_path, mask)
 
             print("Mask saved successfully as 'mask.png'!")
         except Exception as e:
